@@ -1,0 +1,29 @@
+body {
+    background-color: #121212;
+    color: #f1f1f1;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background-color: #1f1f1f;
+  }
+
+  .sidebar a {
+    display: block;
+    padding: 10px 15px;
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .sidebar a:hover {
+    background-color: #333;
+    color: #fff;
+  }
+
+  .content {
+    padding: 30px;
+  }
