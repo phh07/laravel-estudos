@@ -33,15 +33,22 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>João da Silva</td>
-            <td>000.000.000-00</td>
-            <td>(41)90000-0000</td>
-            <td>joao@email.com</td>
-            <td><button class="btn btn-primary btn-sm">Editar</button></td>
-            <td><button class="btn btn-danger btn-sm">Excluir</button></td>
-          </tr>
+            @forelse ($cliente as $dado)
+            <tr>
+                <td>{{ $dado->id }}</td>
+                <td>{{ $dado->nome }}</td>
+                <td>{{ $dado->cpf }}</td>
+                <td>{{ $dado->telefone }}</td>
+                <td>{{ $dado->email }}</td>
+                <td><button class="btn btn-primary btn-sm">Editar</button></td>
+                <td><button class="btn btn-danger btn-sm">Excluir</button></td>
+              </tr>
+            @empty
+              <div class="alert alert-danger">
+                <p>Não a cadastro!</p>
+              </div>
+            @endforelse
+
         </tbody>
       </table>
     </div>

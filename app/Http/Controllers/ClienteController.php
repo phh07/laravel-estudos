@@ -10,7 +10,10 @@ class ClienteController extends Controller
 {
     public function index()
     {
-        return view('cliente/index');
+        //*buscar informações do banco
+        $cliente = Cliente::orderBy('id')->get();
+        //* retorna as info na view
+        return view('cliente/index', ['cliente' => $cliente]);
     }
 
     public function create()
