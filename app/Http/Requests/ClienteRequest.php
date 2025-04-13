@@ -30,7 +30,7 @@ class ClienteRequest extends FormRequest
         ];
     }
 
-    public function message():array
+    public function messages():array
     {
         return [
             'nome.required' => 'O nome é obrigatório!',

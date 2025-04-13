@@ -10,7 +10,7 @@
 <body>
   <div class="d-flex">
     <div class="sidebar p-3">
-      <h4 class="text-light">Phflix</h4>
+      <h4 class="text-light">Gerenc. de clientes</h4>
       <a href="{{ Route('painel.controle') }}">Painel de Controle</a>
       <a href="{{ Route('cliente.index') }}">Clientes</a>
       <a href="{{ Route('cliente.create') }}">Cadastrar Clientes</a>
@@ -40,7 +40,7 @@
                 <td>{{ $dado->cpf }}</td>
                 <td>{{ $dado->telefone }}</td>
                 <td>{{ $dado->email }}</td>
-                <td><button class="btn btn-primary btn-sm">Editar</button></td>
+                <td><a href="{{ Route('cliente.edit', ['cliente' => $dado->id]) }}" class="btn btn-primary btn-sm">Editar</a></td>
                 <td><button class="btn btn-danger btn-sm">Excluir</button></td>
               </tr>
             @empty

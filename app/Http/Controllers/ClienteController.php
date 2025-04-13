@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
+    //* Index, mostra todos registros do banco
     public function index()
     {
         //*buscar informações do banco
@@ -16,12 +17,13 @@ class ClienteController extends Controller
         return view('cliente/index', ['cliente' => $cliente]);
     }
 
+    //* Retorna o form de criação
     public function create()
     {
         return view('cliente/create');
     }
 
-    //mostrar resultados
+    //* Mostrar resultados
     public function show()
     {
         return view('cliente/show');
@@ -34,8 +36,30 @@ class ClienteController extends Controller
         //* Salvar no banco
         Cliente::create($request->all());
 
-        //! Redirecionamento
+        //* Redirecionamento
         return redirect()->route('cliente.show')->with('sucessed', 'Cliente cadastrado com sucesso');
+    }
+
+    //* Visualizar dados a partir do id
+    public function edit(Cliente $cliente)
+    {
+        //! Atribui o model a cliente, e será possivel usar na view para ler o dados já cadastrados
+        return view('cliente/edit', ['cliente' => $cliente]);
+    }
+
+    public function update(Cliente $cliente, ClienteRequest $request)
+    {
+        $request->validated();
+
+        $cliente->update([
+            'nome' => $request->nome,
+            'cpf' => $request->cpf,
+            'email' => $request->email,
+            'telefone' => $request->telefone,
+            'nascimento' => $request->nascimento
+        ]);
+
+        return redirect()->route('cliente.index')->with('sucessed', 'Dados do cliente atualizado!');
     }
 
 }

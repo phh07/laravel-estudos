@@ -10,7 +10,7 @@
 <body>
   <div class="d-flex">
     <div class="sidebar p-3">
-      <h4 class="text-light">Phflix</h4>
+      <h4 class="text-light">Gerenc. de clientes</h4>
       <a href="{{ Route('painel.controle') }}">Painel de Controle</a>
       <a href="{{ Route('cliente.index') }}">Clientes</a>
       <a href="{{ Route('cliente.create') }}">Cadastrar Clientes</a>
@@ -24,6 +24,8 @@
                 {{ session('sucessed') }}
             </div>
         @endif
+
+        <a href="{{ Route('cliente.index') }}" class="btn btn-primary">Voltar</a>
     </div>
   </div>
 </body>
