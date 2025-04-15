@@ -53,7 +53,7 @@
                 <label for="dataNascimento">Data de Nascimento:</label>
                 <input type="text" id="nascimento" name="nascimento" maxlength="10" placeholder="aaaa/mm/dd" value="{{ old('nascimento') }}">
               </div>
-              <input type="submit" class="login-btn" type="submit">Cadastrar</input>
+              <input type="submit" class="login-btn" type="submit"></input>
             </form>
           </div>
         </div>

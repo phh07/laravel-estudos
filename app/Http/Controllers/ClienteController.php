@@ -9,10 +9,20 @@ use Illuminate\Http\Request;
 class ClienteController extends Controller
 {
     //* Index, mostra todos registros do banco
-    public function index()
+    public function index(Request $request)
     {
+        //* tipo da pesquisa
+        $pesquisa = $request->input('search');
+
         //*buscar informações do banco
-        $cliente = Cliente::orderBy('id')->get();
+
+        //! O like é um tipo de consulta do bd, o % % antes e depois significa que está procurando o termo em qualquer lugar que apareça
+        $cliente = Cliente::where('nome', 'like', '%' . $pesquisa . '%')->orWhere('cpf', 'like', '%' . $pesquisa . '%')->
+        orWhere('email', 'like', '%' . $pesquisa . '%')->orWhere('telefone', 'like', '%' . $pesquisa . '%')->
+        orWhere('nascimento', 'like', '%' . $pesquisa . '%')->
+
+        orderBy('id')->paginate(10);
+
         //* retorna as info na view
         return view('cliente/index', ['cliente' => $cliente]);
     }

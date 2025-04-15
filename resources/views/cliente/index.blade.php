@@ -19,12 +19,18 @@
     </div>
     <div class="content flex-grow-1">
       <h2>Painel de Clientes</h2>
-      <h5 class="mb-3">Lista de Clientes</h5>
       @if(@session('sucessed'))
             <div class="alert alert-success">
                 {{ session('sucessed') }}
             </div>
         @endif
+
+    <form action="{{ Route('cliente.index') }}" method="get" class="mb-3 d-flex">
+        <input type="text" name="search" id="search" class="form-control me-2 dark" placeholder="Buscar cliente">{{-- Busca de multiplos campos --}}
+        <button type="submit" class="btn btn-outline-light" id="buscar">Buscar</button>
+        <a href="{{ Route('cliente.create') }}" class="btn btn-outline-light" id="novo">Novo</a>
+    </form>
+    <br>
       <table class="table table-dark table-striped">
         <thead>
           <tr>
@@ -56,12 +62,15 @@
               </tr>
             @empty
               <div class="alert alert-danger">
-                <p>Não a cadastro!</p>
+                <p>Nenhum cadastro encontrado!</p>
               </div>
             @endforelse
 
         </tbody>
       </table>
+      {{-- ! links renderizara os links para o restante das paginas, é compativel com o tailwind css --}}
+      {{ $cliente->links() }}
+
     </div>
   </div>
 </body>
