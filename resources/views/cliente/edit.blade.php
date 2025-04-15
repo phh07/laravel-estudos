@@ -30,7 +30,7 @@
         <div class="content flex-grow-1">
           <div class="login-container">
             <h2>Editar Cliente</h2>
-            <form action="{{ route('cliente.update', ['cliente' => $cliente]) }}" method="POST">
+            <form action="{{ route('cliente.update', ['cliente' => $cliente->id]) }}" method="POST">
                 @csrf
                 @method('PUT')
 

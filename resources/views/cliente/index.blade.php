@@ -20,6 +20,11 @@
     <div class="content flex-grow-1">
       <h2>Painel de Clientes</h2>
       <h5 class="mb-3">Lista de Clientes</h5>
+      @if(@session('sucessed'))
+            <div class="alert alert-success">
+                {{ session('sucessed') }}
+            </div>
+        @endif
       <table class="table table-dark table-striped">
         <thead>
           <tr>
@@ -41,7 +46,13 @@
                 <td>{{ $dado->telefone }}</td>
                 <td>{{ $dado->email }}</td>
                 <td><a href="{{ Route('cliente.edit', ['cliente' => $dado->id]) }}" class="btn btn-primary btn-sm">Editar</a></td>
-                <td><button class="btn btn-danger btn-sm">Excluir</button></td>
+                <td>
+                    <form action="{{ Route('cliente.destroy', ['cliente' => $dado->id]) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                    </form>
+                </td>
               </tr>
             @empty
               <div class="alert alert-danger">

@@ -21,6 +21,8 @@ Route::get('/edit-cliente/{cliente}', [ClienteController::class, 'edit'])->name(
 //* Edita as informações no banco de dados
 Route::put('/update-cliente/{cliente}', [ClienteController::class, 'update'])->name('cliente.update');
 //! Put(), atualiza dados existentes
+//* Deleta informações do banco
+Route::delete('/destroy-cliente{cliente}', [ClienteController::class, 'destroy'])->name('cliente.destroy');
 
 
 
